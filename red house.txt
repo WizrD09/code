@@ -1,0 +1,10 @@
+g= nltk.CFG.fromstring("""
+S -> ADJS N | N
+ADJS -> ADJS ADJ | ADJ
+ADJ -> "red"
+N -> "house"
+""") 
+token = nltk.word_tokenize(s)
+parser = nltk.ChartParser(g)
+for t in parser.parse(token):
+    print(t) 

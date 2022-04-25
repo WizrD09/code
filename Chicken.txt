@@ -1,0 +1,19 @@
+import nltk
+s="the chicken is ready to eat"
+g= nltk.CFG.fromstring("""
+S -> NP VP
+NP -> DT N
+VP -> VBZ ADJP | VBZ ADJP PP
+ADJP -> JJ PP | JJ
+PP -> P VB
+DT -> 'the'
+N -> 'chicken'
+VBZ -> 'is'
+JJ -> 'ready'
+P -> 'to'
+VB -> 'eat'
+""")
+token=nltk.word_tokenize(s)
+parser= nltk.ChartParser(g)
+for t in parser.parse(token):
+         print(t)

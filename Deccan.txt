@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct dataItem{
+int amount;
+int units;
+}sales[5][4][4];
+
+int main(){
+
+printf("\nData cube for Deccan Electronics\n\n");
+    for (int i = 0; i < 5; i++)
+    {
+       switch(i){
+       case 0:
+       printf("\t\t\tVijayawada\n");
+       break;
+       case 1:
+       printf("\t\t\tMumbai\n");
+       break;
+       case 2:
+       printf("\t\t\tChennai\n");
+       break;
+       case 3:
+        printf("\t\t\tPune\n");
+        break;
+       default:
+       printf("\t\t\tHyderabad\n");
+       }
+       printf("-----------------------------------------------------------------------------------\n");
+    printf("\tTV\t\tAudio\t\tComputer\tGames\n");
+       printf("-----------------------------------------------------------------------------------\n");
+        for (int j= 0; j <4; j++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                sales[i][j][k].amount=rand()%10000+1000;
+                 sales[i][j][k].units=rand()%100+12;
+                printf("\t[%d,%d]", sales[i][j][k].amount,sales[i][j][k].units);
+            }
+            printf("\tQ%d\n",j+1);
+        }
+        printf("\n");
+    }
+
+return 0;
+}

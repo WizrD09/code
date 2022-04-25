@@ -1,0 +1,26 @@
+import pandas as pd
+
+dataset=[['milk','beer','egg','bread','corn'],
+        ['milk','egg','corn','ice-cream','bread'],
+        ['milk','corn','beer','apples','egg'],
+        ['beer','egg','ice-cream'],
+        ['corn','milk','bread','egg','apples'],
+        ['beer','egg','milk','corn'],
+        ['corn','milk','egg'],
+        ['bread','egg','milk'],
+        ['corn','apples','beer','ice-cream','bread'],
+        ['milk','beer','egg','bread','corn']]
+
+from mlxtend.preprocessing import TransactionEncoder
+te=TransactionEncoder()
+te_array=te.fit(dataset).transform(dataset)
+df=pd.DataFrame(te_array,columns=te.columns_)
+print(df)
+
+from mlxtend.frequent_patterns import apriori
+
+result=apriori(df, min_support=0.6,use_colnames=True)
+print(result)
+
+from mlxtend.frequent_patterns import association_rules
+association_rules(result,metric="lift", min_threshold=1)

@@ -1,0 +1,16 @@
+import nltk
+s= """the dog saw a man in the park """
+g= nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N | Det N PP
+VP -> V NP | V NP PP
+PP -> P NP
+V -> "saw"
+Det -> "a" | "the"
+N -> "dog" | "man" | "park"
+P -> "in"
+""")
+token=nltk.word_tokenize(s)
+parser=nltk.ChartParser(g)
+for t in parser.parse(token):
+         print(t)

@@ -1,0 +1,21 @@
+import nltk
+
+g=nltk.PCFG.fromstring("""
+S -> NP VP    [1.0]
+NP -> DT NN   [0.5]
+NP -> NNS     [0.3]
+NP -> NP PP   [0.2]
+PP -> P NP    [1.0]
+VP -> VP PP   [0.6]
+VP -> VBD NP  [0.4]
+DT -> 'the'   [1.0]
+NN -> 'gunman' [0.5]
+NN -> 'building' [0.5]
+VBD -> 'sprayed' [1.0]
+NNS -> 'bullets' [1.0]
+P -> 'with'      [1.0]
+""")
+s= ["the", "gunman", "sprayed", "the", "building", "with", "bullets"]
+parser=nltk.ViterbiParser(g)
+for t in parser.parse(s) :
+         print(t)

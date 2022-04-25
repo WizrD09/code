@@ -1,0 +1,12 @@
+s="I saw a boy with a telescope"
+g=nltk.CFG.fromstring("""
+S -> NP VP
+NP -> ART N | ART N PP | PRON
+VP -> V NP PP | V NP
+PP -> P NP
+ART -> "a" | "an" | "the"
+N -> "boy" | "telescope"
+PRON -> "I"
+V -> "saw"
+P -> "with"
+""")
